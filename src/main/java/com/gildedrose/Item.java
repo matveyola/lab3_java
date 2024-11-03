@@ -19,19 +19,33 @@ public class Item {
         this.itemQuality = new Quality(quality);
     }
 
-    // Геттер для отримання значення name
     public String getName() {
         return itemName.getName();
     }
 
-    // Геттер для отримання значення sellIn
     public int getSellIn() {
         return itemSellIn.getSellIn();
     }
 
-    // Геттер для отримання значення quality
     public int getQuality() {
         return itemQuality.getQuality();
+    }
+
+    public void increaseQuality() {
+        itemQuality.increaseQuality();
+    }
+
+    public void decreaseQuality() {
+        itemQuality.decreaseQuality();
+    }
+
+    public void decreaseSellIn() {
+        itemSellIn.decreaseSellIn();
+    }
+
+
+    public void resetQuality() {
+        itemQuality = new Quality(0);
     }
 
     @Override
