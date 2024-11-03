@@ -8,19 +8,24 @@ public class BackstagePass extends Item {
     @Override
     public void update() {
         decreaseSellIn();
-
-        if (getSellIn() < 0) {
+        if (isExpired()) {
             resetQuality();
-        } else if (getSellIn() < 5) {
-            increaseQuality();
-            increaseQuality();
-            increaseQuality();
-        } else if (getSellIn() < 10) {
-            increaseQuality();
-            increaseQuality();
         } else {
+            increaseQualityBasedOnSellIn();
+        }
+    }
+
+    private boolean isExpired() {
+        return getSellIn() < 0;
+    }
+
+    private void increaseQualityBasedOnSellIn() {
+        increaseQuality();
+        if (getSellIn() < 10) {
+            increaseQuality();
+        }
+        if (getSellIn() < 5) {
             increaseQuality();
         }
     }
 }
-

@@ -9,9 +9,14 @@ public class AgedBrie extends Item {
     public void update() {
         decreaseSellIn();
         increaseQuality();
-        if (getSellIn() < 0) {
+        if (isExpired()) {
             increaseQuality();
         }
     }
+
+    private boolean isExpired() {
+        return getSellIn() < 0;
+    }
 }
+
 
