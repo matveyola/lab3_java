@@ -5,9 +5,9 @@ public class Item {
     public int sellIn;
     public int quality;
 
-    private ItemName itemName;
-    private SellIn itemSellIn;
-    private Quality itemQuality;
+    protected ItemName itemName;
+    protected SellIn itemSellIn;
+    protected Quality itemQuality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
@@ -43,7 +43,6 @@ public class Item {
         itemSellIn.decreaseSellIn();
     }
 
-
     public void resetQuality() {
         itemQuality = new Quality(0);
     }
@@ -51,5 +50,16 @@ public class Item {
     @Override
     public String toString() {
         return this.itemName.getName() + ", " + this.itemSellIn.getSellIn() + ", " + this.itemQuality.getQuality();
+    }
+
+    // Метод для оновлення, який буде перевизначено в класах-нащадках
+    public void update() {
+        decreaseSellIn();
+        if (quality > 0) {
+            decreaseQuality();
+        }
+        if (sellIn < 0 && quality > 0) {
+            decreaseQuality();
+        }
     }
 }
