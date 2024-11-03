@@ -16,15 +16,15 @@ public class BackstagePass extends Item {
     }
 
     private boolean isExpired() {
-        return getSellIn() < 0;
+        return itemSellIn.getSellIn() < 0;
     }
 
     private void increaseQualityBasedOnSellIn() {
         increaseQuality();
-        if (getSellIn() < 10) {
+        if (itemSellIn.getSellIn() < 10) {
             increaseQuality();
         }
-        if (getSellIn() < 5) {
+        if (itemSellIn.getSellIn() < 5) {
             increaseQuality();
         }
     }

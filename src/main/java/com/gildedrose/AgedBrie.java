@@ -15,7 +15,7 @@ public class AgedBrie extends Item {
     }
 
     private boolean isExpired() {
-        return getSellIn() < 0;
+        return itemSellIn.getSellIn() < 0;
     }
 }
 

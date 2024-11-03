@@ -16,42 +16,34 @@ public class Item {
         return itemName.getName();
     }
 
-    public int getSellIn() {
-        return itemSellIn.getSellIn();
-    }
-
-    public int getQuality() {
-        return itemQuality.getQuality();
-    }
-
-    public void increaseQuality() {
+    protected void increaseQuality() {
         itemQuality.increaseQuality();
     }
 
-    public void decreaseQuality() {
+    protected void decreaseQuality() {
         itemQuality.decreaseQuality();
     }
 
-    public void decreaseSellIn() {
+    protected void decreaseSellIn() {
         itemSellIn.decreaseSellIn();
     }
 
-    public void resetQuality() {
+    protected void resetQuality() {
         itemQuality = new Quality(0);
+    }
+
+    public void update() {
+        decreaseSellIn();
+        if (itemQuality.getQuality() > 0) {
+            decreaseQuality();
+        }
+        if (itemSellIn.getSellIn() < 0 && itemQuality.getQuality() > 0) {
+            decreaseQuality();
+        }
     }
 
     @Override
     public String toString() {
         return this.itemName.getName() + ", " + this.itemSellIn.getSellIn() + ", " + this.itemQuality.getQuality();
-    }
-
-    public void update() {
-        decreaseSellIn();
-        if (getQuality() > 0) {
-            decreaseQuality();
-        }
-        if (getSellIn() < 0 && getQuality() > 0) {
-            decreaseQuality();
-        }
     }
 }
